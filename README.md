@@ -8,7 +8,7 @@ You'll need to use the [Day.js](https://day.js.org/en/) library to work with dat
 
 ## User Story
 
-```md
+```
 AS AN employee with a busy schedule
 I WANT to add important events to a daily planner
 SO THAT I can manage my time effectively
@@ -16,7 +16,7 @@ SO THAT I can manage my time effectively
 
 ## Acceptance Criteria
 
-```md
+```
 GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
 THEN the current day is displayed at the top of the calendar
