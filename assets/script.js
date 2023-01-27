@@ -1,7 +1,7 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(function () {
+$(document).ready(function () {
 
   let currentDate = dayjs().format("MMMM D, YYYY");
   $("#currentDay").text(currentDate);
@@ -15,15 +15,7 @@ $(function () {
     for(let i = 0; i < workHours.length; i++){
       console.log(hour)
 
-      if(workHours[i] === hour){
-        console.log('present')
-      }
-      else if(workHours[i] < hour){
-        console.log('past')
-      }
-      else{
-        console.log('future')
-      }
+
 
       let divHours = $("<div class='row time-block' >")
       
@@ -34,8 +26,21 @@ $(function () {
       let textArea = $("<textarea class='col-8 col-md-10 description' rows='3'>")
       textArea.attr('id', `textArea-${i}`)
 
-      let buttton = $("<button class='btn saveBtn col-2 col-md-1' aria-label='save'>")
-
+      let buttton = $("<button id = 'ESTER' class='btn saveBtn col-2 col-md-1' aria-label='save'>").on('click', function(event){
+        console.log($(event.target).siblings(".description").val())
+      })
+      if(workHours[i] === hour){
+        textArea.addClass("present")
+        console.log('present')
+      }
+      else if(workHours[i] < hour){
+        textArea.addClass("past")
+        console.log('past')
+      }
+      else{
+        textArea.addClass("future")
+        console.log('future')
+      }
       let icon = $("<i class='fas fa-save' aria-hidden='true'></i>")
       buttton.append(icon)
       
@@ -49,7 +54,12 @@ $(function () {
     }
 
   }
+  workDayScheduler()
 
+function saveData (){
+  let value = $(this).siblings('.description').val()
+  console.log($(value))
+}
 
 
 
