@@ -3,7 +3,59 @@
 // in the html.
 $(function () {
 
+  let currentDate = dayjs().format("MMMM D, YYYY");
+  $("#currentDay").text(currentDate);
+  let main = $("#main")
+  // let localStorage = localStorage.getItem()
+  let hour = dayjs().get('hour')
 
+  let workHours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+
+  function workDayScheduler(){
+    for(let i = 0; i < workHours.length; i++){
+      console.log(hour)
+
+      if(workHours[i] === hour){
+        console.log('present')
+      }
+      else if(workHours[i] < hour){
+        console.log('past')
+      }
+      else{
+        console.log('future')
+      }
+
+      let divHours = $("<div class='row time-block' >")
+      
+      divHours.attr('id', `hours-${i}`)
+      let divCol = $("<div class='col-2 col-md-1 hour text-center py-3'>")
+      divCol.text(workHours[i])
+      
+      let textArea = $("<textarea class='col-8 col-md-10 description' rows='3'>")
+      textArea.attr('id', `textArea-${i}`)
+
+      let buttton = $("<button class='btn saveBtn col-2 col-md-1' aria-label='save'>")
+
+      let icon = $("<i class='fas fa-save' aria-hidden='true'></i>")
+      buttton.append(icon)
+      
+      
+
+
+      divHours.append(divCol,textArea, buttton)
+      main.append(divHours)
+
+
+    }
+
+  }
+
+
+
+
+
+
+ 
 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -23,8 +75,8 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
 
-  let currentHour = currentDate.hour();
-  $('.time-block').each(function();
+  // let currentHour = currentDate.hour();
+  // $('.time-block').each(function();
   //If Else Statement....??
   
 
@@ -35,21 +87,12 @@ $(function () {
   // attribute of each time-block be used to do this?
 
 
-let event = localStorage.getItem(hour);
+  // let event = localStorage.getItem(hour);
 
   //
   // TODO: Add code to display the current date in the header of the page.
 });
 
 
-// Display Current Date
-let currentDate = dayjs().format("MMMM D, YYYY");
-$("currentDat").text(currentDate);
 
-
-// Time Block Divs
-var timeBlocks = document.querySelectorAll('.time-block');
-
-// Current Hour
-var currentHour = new Date().getHours();
  
